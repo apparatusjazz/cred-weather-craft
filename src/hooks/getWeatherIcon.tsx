@@ -11,24 +11,24 @@ import {
 import {ReactElement} from "react";
 
 
-export const useWeatherIcon = (weatherDescription: string): ReactElement<IconType> => {
+export const getWeatherIcon = (weatherDescription: string, styleClass: string = ""): ReactElement<IconType> => {
     if (weatherDescription.includes("Clear skies"))
-        return <WiDaySunny/>
+        return <WiDaySunny className={styleClass}/>
     if (weatherDescription.includes("Mostly clear"))
-        return <WiDaySunnyOvercast/>
+        return <WiDaySunnyOvercast className={styleClass}/>
     if (weatherDescription.includes("Partly cloudy"))
-        return <WiDayCloudy/>
+        return <WiDayCloudy className={styleClass}/>
     if (weatherDescription.includes("Overcast"))
-        return <WiCloud/>
+        return <WiCloud className={styleClass}/>
     if (weatherDescription.includes("izzle"))
-        return <WiDayShowers/>
+        return <WiDayShowers className={styleClass}/>
     if (weatherDescription.includes("Heavy rain"))
-        return <WiRain/>
+        return <WiRain className={styleClass}/>
     if (weatherDescription.includes("rain"))
-        return <WiShowers/>
+        return <WiShowers className={styleClass}/>
     if (weatherDescription.includes("snowfall"))
-        return <WiDaySnow/>
+        return <WiDaySnow className={styleClass}/>
     if (weatherDescription.includes("Thunderstorms"))
-        return <WiDayStormShowers/>
-    return <WiDaySunny/>
+        return <WiDayStormShowers className={styleClass}/>
+    return <WiDaySunny className={styleClass}/>
 };
