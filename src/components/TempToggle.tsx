@@ -9,7 +9,7 @@ type TempToggleProps = {
 const TempToggle: React.FC<TempToggleProps> = ({toggleTemp, toggleVal}) => {
     return (
         <div className='toggle-switch'>
-            <label>
+            <label className="temp-label">
                 <input type='checkbox' onChange={() => toggleTemp(x => !x)}/>
                 <span className='slider'></span>
                 <div className="c" style={{ color: toggleVal ? "white" : "#64aed5"}}>C&deg;</div>

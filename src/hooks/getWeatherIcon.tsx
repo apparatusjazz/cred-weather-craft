@@ -22,6 +22,8 @@ export const getWeatherIcon = (weatherDescription: string, styleClass: string = 
         return <WiCloud className={styleClass}/>
     if (weatherDescription.includes("izzle"))
         return <WiDayShowers className={styleClass}/>
+    if (weatherDescription.includes("Light rain"))
+        return <WiDayShowers className={styleClass}/>
     if (weatherDescription.includes("Heavy rain"))
         return <WiRain className={styleClass}/>
     if (weatherDescription.includes("rain"))

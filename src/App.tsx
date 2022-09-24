@@ -25,20 +25,24 @@ const weatherData: WeatherResponse = {
 
 const url = "https://api.open-meteo.com/v1/forecast?latitude=32.77&timezone=America/Chicago&longitude=-96.79&daily=temperature_2m_max&daily=temperature_2m_min&daily=windspeed_10m_max&daily=weathercode&windspeed_unit=mph&current_weather=true";
 function App() {
-    const { data, loading, error } = weatherData;
+    const { data, loading, error } = useWeatherApiGet(url);
     const [tempF, setTempF] = useState(true);
-
+    const [themeLight, toggleTheme] = useState(false);
     const generateWeatherCards = () => {
-        const cards: any = [];
-        for (let i = 1; i < 6; i ++) {
-           cards.push(<WeatherCard
-               day={data.days[i]}
-               icon={getWeatherIcon(data.description[i], "text-light-blue text-6xl")}
-               temp={tempF ? data.temperatureF[i] : data.temperatureC[i]}
-           />);
+        if (!loading && data.days.length > 0) {
+            const cards: any = [];
+            for (let i = 1; i < 6; i ++) {
+               cards.push(<WeatherCard
+                   key={`card-${i}`}
+                   day={data.days[i]}
+                   icon={getWeatherIcon(data.description[i], "text-light-blue text-6xl")}
+                   temp={tempF ? data.temperatureF[i] : data.temperatureC[i]}
+               />);
+            }
+            return cards;
         }
-        return cards;
     }
+    if (loading || error) return (<div>loading</div>);
     return (
     <div className="App bg-gradient-to-bl from-cyan-300 to-blue-600 h-screen w-screen">
         <div className="max-w-4xl mx-auto relative pt-10 md:top-1/2 md:-translate-y-96 md:pt-0">
@@ -52,17 +56,20 @@ function App() {
 
             <div className="h-0 shadow-md bg-contain bg-no-repeat relative mt-5"
                  style={{ backgroundImage: "url(/Dallas.png)", paddingTop: '54.92%' }}>
-                <div className="flex place-content-between absolute top-0 mt-5 ml-6 text-light-blue"
+                <div className="flex place-content-between absolute top-0 ml-3 mt-3 md:mt-5 md:ml-6 text-light-blue"
                     style={{width: '-webkit-fill-available'}}>
-                    <div className="flex text-6xl items-end">
+                    <div className="flex text-5xl md:text-6xl items-end">
                         <p className="pb-1">{tempF ? data.temperatureF[0] : data.temperatureC[0]}&deg;</p>
-                        {getWeatherIcon(data.description[0])}
-                        <div className="flex-col items-start text-base ml-3 pb-3">
+                        {data.description[0] && getWeatherIcon(data.description[0])}
+                        <div className="flex-col items-start text-base ml-3 pb-1 md:pb-3">
                            <p>{data.description[0]}</p>
                             <p>{data.currentWind} mph</p>
                         </div>
                     </div>
-                    <div className="mr-5 mt-3">
+                    <div className="mr-1 md:mr-5 md:mt-3 grid gap-6 md:flex">
+                        <div className="mr-3">
+                            <Toggle toggleVal={themeLight} toggleTheme={toggleTheme}/>
+                        </div>
                         <TempToggle toggleTemp={setTempF} toggleVal={tempF}/>
                     </div>
                 </div>

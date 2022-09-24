@@ -3,7 +3,7 @@
     width: 62px;
 }
 
-label {
+.temp-label {
     position: absolute;
     width: 100%;
     height: 30px;
@@ -26,7 +26,7 @@ input {
 }
 
 input:checked ~ .slider {
-    background-color: var(--light);
+    background-color: #64aed5;
 }
 
 .slider::before {
