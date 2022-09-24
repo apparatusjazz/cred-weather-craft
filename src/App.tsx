@@ -41,7 +41,7 @@ function App() {
     }
     return (
     <div className="App bg-gradient-to-bl from-cyan-300 to-blue-600 h-screen w-screen">
-        <div className="max-w-4xl mx-auto relative top-1/2 -translate-y-96">
+        <div className="max-w-4xl mx-auto relative pt-10 md:top-1/2 md:-translate-y-96 md:pt-0">
             <div className="text-white">
                 <div className="flex justify-center font-bold text-lg">
                     <IoLocationSharp className="mt-1 mr-1"/>
@@ -67,9 +67,9 @@ function App() {
                     </div>
                 </div>
             </div>
-            <img src="/cloud.png" style={{ position: "absolute", top: "260px", left: "-150px", width: "250px"}}/>
-            <img src="/cloud.png" style={{ position: "absolute", top: "160px", right: "-80px", width: "280px"}}/>
-            <div className="grid grid-cols-5i grid-flow-col gap-px bg-gray-300 h-44">
+            <img src="/cloud.png" className="absolute hidden md:block md:top-[260px] md:left-[-150px] md:w-[250px]"/>
+            <img src="/cloud.png" className="absolute hidden md:block h-[150px] md:top-[165px] md:right-[-80px]"/>
+            <div className="grid grid-flow-row md:grid-cols-5 md:grid-flow-col gap-px bg-gray-300 h-96 md:h-44 mx-5 md:mx-0 shadow-lg rounded-b-md">
                 {!loading && generateWeatherCards()}
             </div>
         </div>
