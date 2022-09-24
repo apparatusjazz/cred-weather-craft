@@ -11,6 +11,7 @@ export type WeatherResponse = {
 
 type DailyWeather = {
     days: Array<string>;
+    currentWind: number;
     temperatureC: Array<number>
     temperatureF: Array<number>
     description: Array<string>
@@ -21,6 +22,7 @@ export const useWeatherApiGet = (url: string): WeatherResponse => {
     const [statusText, setStatusText] = useState<String>('');
     const [data, setData] = useState<DailyWeather>({
         days: [],
+        currentWind: 0,
         temperatureC: [],
         temperatureF: [],
         description: []
@@ -44,8 +46,10 @@ export const useWeatherApiGet = (url: string): WeatherResponse => {
             })
             const tempF = tempC.map((temp: number) => Math.round(convertToF(temp)));
             const desc = daily["weathercode"].map((code: number) => weatherCodeToDescription(code));
+            const currentWind = Math.round(json["current_weather"].windspeed);
             const weather: DailyWeather = {
                 days,
+                currentWind,
                 temperatureC: tempC,
                 temperatureF: tempF,
                 description: desc

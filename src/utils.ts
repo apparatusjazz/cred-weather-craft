@@ -9,10 +9,10 @@ export const timeToWeekDay = (time: string) => {
 }
 
 export const convertToF = (celsius: number) => {
-    // make the given fahrenheit variable equal the given celsius value
+    // make the given fahrenheit constiable equal the given celsius value
     // multiply the given celsius value by 9/5 then add 32
     let fahrenheit = celsius * 9/5 + 32
-    // return the variable fahrenheit as the answer
+    // return the constiable fahrenheit as the answer
     return fahrenheit;
 }
 
@@ -49,3 +49,16 @@ export const weatherCodeToDescription = (code: number) => {
 }
 
 export const avg = (a: number, b: number) => ((a + b) / 2);
+
+export const getFormattedDate = (today: Date) =>
+{
+    const week =  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const day  = week[today.getDay()];
+    const dd   = today.getDate();
+    const mm   = month[today.getMonth()];
+    const yyyy = today.getFullYear();
+
+
+    return `${day}, ${mm} ${dd}, ${yyyy}`
+}
