@@ -1,6 +1,6 @@
 
 export const timeToWeekDay = (time: string) => {
-    if (Date.parse(time) == NaN) return "Day";
+    if (isNaN(Date.parse(time))) return "Day";
 
     const weekday = ["Mon","Tue","Wed","Thu","Fri","Sat", "Sun"];
 
@@ -41,7 +41,7 @@ export const weatherCodeToDescription = (code: number) => {
         99: "Thunderstorms",
     };
     // @ts-ignore
-    if (map[code] == undefined) {
+    if (map[code] === undefined) {
         return "Some weather";
     } else { // @ts-ignore
         return map[code];
