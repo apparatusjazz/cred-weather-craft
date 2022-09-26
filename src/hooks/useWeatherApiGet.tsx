@@ -17,16 +17,18 @@ type DailyWeather = {
     description: Array<string>
 }
 
+const initialWeather: DailyWeather = {
+    days: ['Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'],
+    currentWind: 10,
+    temperatureF: [84, 88, 86, 77, 79, 79, 73],
+    temperatureC: [29, 31, 30, 25, 26, 26, 23],
+    description: ['Partly cloudy', 'Partly cloudy', 'Overcast', 'Mostly clear', 'Partly cloudy', 'Partly cloudy', 'Mostly clear']
+};
+
 export const useWeatherApiGet = (url: string): WeatherResponse => {
     const [status, setStatus] = useState<Number>(0);
     const [statusText, setStatusText] = useState<String>('');
-    const [data, setData] = useState<DailyWeather>({
-        days: [],
-        currentWind: 0,
-        temperatureC: [],
-        temperatureF: [],
-        description: []
-    });
+    const [data, setData] = useState<DailyWeather>(initialWeather);
     const [error, setError] = useState<any>();
     const [loading, setLoading] = useState<boolean>(false);
 
