@@ -5,60 +5,6 @@
     --link-hover: rgb(24, 94, 82);
 }
 
-
-/*.toggler {*/
-/*    position: relative;*/
-/*    width: 62px;*/
-/*}*/
-
-/*.toggle-label {*/
-/*    position: absolute;*/
-/*    width: 100%;*/
-/*    height: 30px;*/
-/*    background-color: var(--dark);*/
-/*    border-radius: 50px;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*input {*/
-/*    position: absolute;*/
-/*    display: none;*/
-/*}*/
-
-/*.slide {*/
-/*    position: absolute;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    border-radius: 50px;*/
-/*    transition: 0.3s;*/
-/*}*/
-
-/*input:checked ~ .slide {*/
-/*    background-color: #64aed5;*/
-/*}*/
-
-/*.slide::before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    top: 3px;*/
-/*    left: 7px;*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*    border-radius: 50%;*/
-/*    box-shadow: inset 8px 0px 0px 0px var(--light);*/
-/*    background-color: var(--dark);*/
-/*    transition: 0.3s;*/
-/*}*/
-
-
-/*input:checked ~ .slide::before {*/
-/*    transform: translateX(28px);*/
-/*    background-color: white;*/
-/*    box-shadow: none;*/
-/*}*/
-
-
-
  .toggler{
     position: relative;
     width: 62px;
@@ -104,6 +50,6 @@ input:checked ~ .slide {
 
 input:checked ~ .slide::before {
     transform: translateX(-30px);
-    box-shadow: inset 8px 0px 0px 0px var(--light);
+    box-shadow: inset 8px 0 0 0 var(--light);
     background-color: var(--dark);
 }
